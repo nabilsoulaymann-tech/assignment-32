@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+<style>
+    body{
+        background-image: url('image.png');
+        color: white;
+        background-repeat: no-repeat;
+        background-size:cover ;
+    }
+div{
+    text-align: center;
+}
+p{
+   font-size: 100px;
+}
+#start{
+    background-color: aqua;
+}
+button{
+    font-size: 60px;
+    width:20%;
+    height:100px;
+    border-radius: 25px;
+}
+#reset{
+    background-color: orange;
+}
+#stop{
+    background-color: red;
+}
+button:hover{
+    color:blue;
+    background-color: grey;
+}
+</style>
+</head>
+<body>
+    <div>
+        <p id="outputtime"></p>
+        <div>
+            <button id="start">Start</button>
+            <button id="stop">Stop</button>
+            <button id="reset">Reset</button>
+        </div>
+    </div>
+<script>
+let outputtime=document.getElementById('outputtime');
+let time=30;
+let start=document.getElementById('start');
+let stop=document.getElementById('stop');
+let reset=document.getElementById('reset');
+let interval;
+function Timer(){
+time --;
+outputtime.innerHTML=time;
+if (time<=0){
+    clearInterval(interval);
+    outputtime.innerHTML='Time is up!'
+}
+}
+start.addEventListener('click',function(){
+    time=30;
+    clearInterval(interval);
+    interval=setInterval(Timer,1000)
+})
+reset.addEventListener('click',function(){
+    time=30;
+    outputtime.innerHTML=time;
+    clearInterval(interval);
+    interval=setInterval(Timer,1000)
+})
+stop.addEventListener('click',function(){
+    clearInterval(interval)
+    
+})
+</script>
+</body>
+</html>
